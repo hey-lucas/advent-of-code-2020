@@ -2,7 +2,7 @@
 
 This repository contains my solutions to the Advent of Code challenges.
 Each day has its own folder. Inside each folder there is a `run.bat` file
-you can you to execute the programs.
+you can use to execute the programs.
 
 All solutions are written in Kotlin.
 
