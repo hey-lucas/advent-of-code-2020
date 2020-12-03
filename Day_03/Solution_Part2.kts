@@ -3,14 +3,11 @@ import java.io.File
 data class Grid(val width: Int, val height: Int, val cells: Array<Array<Boolean>>) {
     fun isTree(row: Int, column: Int) = cells[row][column]
 
-    fun countTrees() : Int {
+    fun countTrees(verticalStep: Int, horizontalStep: Int) : Int {
 	var currentRow = 0
 	var currentColumn = 0
-
-	val verticalStep = 1
-	val horizontalStep = 3
-
 	var trees = 0
+
 	while (currentRow < height - 1) {
 	    currentRow += verticalStep
 	    currentColumn = (currentColumn + horizontalStep) % width // this ensures we wrap around

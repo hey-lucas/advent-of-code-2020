@@ -11,6 +11,7 @@ data class Grid(val width: Int, val height: Int, val cells: Array<Array<Boolean>
 	val horizontalStep = 3
 
 	var trees = 0
+
 	while (currentRow < height - 1) {
 	    currentRow += verticalStep
 	    currentColumn = (currentColumn + horizontalStep) % width // this ensures we wrap around
