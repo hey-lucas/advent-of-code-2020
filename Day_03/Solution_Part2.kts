@@ -1,45 +1,46 @@
 import java.io.File
 
 data class Grid(val width: Int, val height: Int, val cells: Array<Array<Boolean>>) {
-    companion object {
-	fun fromFile(file: File) : Grid? {
-	    val cells =
-		file.readLines().map { line -> line.map { it == '#' }.toTypedArray() }.toTypedArray()
-
-	    if (cells.size > 0 && cells[0].size > 0) {
-		val height = cells.size
-		val width = cells[0].size
-
-		return Grid(width, height, cells)
-	    }
-
-	    return null
-	}
-    }
-
     fun isTree(row: Int, column: Int) = cells[row][column]
+
+    fun countTrees() : Int {
+	var currentRow = 0
+	var currentColumn = 0
+
+	val verticalStep = 1
+	val horizontalStep = 3
+
+	var trees = 0
+	while (currentRow < height - 1) {
+	    currentRow += verticalStep
+	    currentColumn = (currentColumn + horizontalStep) % width // this ensures we wrap around
+
+	    if (isTree(currentRow, currentColumn)) {
+		trees++
+	    }
+	}
+
+	return trees
+    }
 }
 
-fun solve(grid: Grid, verticalStep: Int, horizontalStep: Int) : Int {
-    var currentRow = 0
-    var currentColumn = 0
-    var trees = 0
-    
-    while (currentRow < grid.height - 1) {
-	currentRow += verticalStep
-	currentColumn = (currentColumn + horizontalStep) % grid.width // this ensures we wrap around
+fun File.toGridOrNull(): Grid? {
+    val cells =
+	readLines().map { line -> line.map { it == '#' }.toTypedArray() }.toTypedArray()
 
-	if (grid.isTree(currentRow, currentColumn)) {
-	    trees++
-	}
+    if (cells.size > 0 && cells[0].size > 0) {
+	val height = cells.size
+	val width = cells[0].size
+
+	return Grid(width, height, cells)
     }
 
-    return trees
+    return null
 }
 
 fun main() {
-    val grid = Grid.fromFile(File("input.txt"))
-
+    val grid = File("input.txt").toGridOrNull()
+    
     if (grid != null) {
 	val steps = listOf(
 	    Pair(1, 1),
@@ -49,7 +50,7 @@ fun main() {
 	    Pair(2, 1),
 	)
 	
-	val treeCounts = steps.map { (verticalStep, horizontalStep) -> solve(grid, verticalStep, horizontalStep) }
+	val treeCounts = steps.map { (verticalStep, horizontalStep) -> grid.countTrees(verticalStep, horizontalStep) }
 	val totalTrees = treeCounts.map { it.toBigInteger() }.reduce() { acc, n -> acc * n}
 
 	println(totalTrees)
