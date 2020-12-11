@@ -20,5 +20,6 @@ All solutions are written in Kotlin.
 | 08  | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_08/Solution_Part1.kts) | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_08/Solution_Part2.kts)|
 | 09  | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_09/Solution_Part1.kts) | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_09/Solution_Part2.kts)|
 | 10  | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_10/Solution_Part1.kts) | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_10/Solution_Part2.kts)|
+| 11  | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_11/Solution_Part1.kts) | [Link](https://github.com/hey-lucas/advent-of-code-2020/blob/main/Day_11/Solution_Part2.kts)|
 |     |        |        |
  
